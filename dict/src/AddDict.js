@@ -1,18 +1,17 @@
-import React from 'react';
+import React, {Component, useState} from 'react';
 import styled from 'styled-components';
 
-const DictInput = (props) => {
-
+const AddDict = () => {
     return(    
     <Input>
         <Title>단어 추가하기</Title>
         <InputBox>
           <p>단어</p>
-            <input type="text"/>
+            <input type="text" />
         </InputBox>
         <InputBox>
           <p>설명</p>
-            <input type="text"/>
+            <input type="text"  />
         </InputBox>
         <InputBox>
           <p>예시</p>
@@ -65,4 +64,4 @@ background-color: #fff;
 `;
 
 
-export default DictInput;
+export default AddDict;

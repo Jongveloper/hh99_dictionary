@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import DictInput from './DictInput';
+import AddDict from './AddDict';
 import { Link } from 'react-router-dom';
 
-const Dict = (props) => {
-    
+const Dict = () => {
+   
     return (
         <Wrap>
             <Title>나의 사전</Title>
@@ -26,7 +26,7 @@ const Dict = (props) => {
                     <h3 style={{color: "#E6749D"}}>저 친구가 초콜릿을 줬어.ㅎ1ㅎ1</h3>
                 </DictList>
             </Container>
-            <Link to="/dictinput">
+            <Link to="/adddict">
                 <InputButton>+</InputButton>
             </Link>
         </Wrap>
