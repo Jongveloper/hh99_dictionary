@@ -7,11 +7,11 @@ const AddDict = () => {
         <Title>단어 추가하기</Title>
         <InputBox>
           <p>단어</p>
-            <input type="text" />
+            <input type="text"/>
         </InputBox>
         <InputBox>
           <p>설명</p>
-            <input type="text"  />
+            <input type="text"/>
         </InputBox>
         <InputBox>
           <p>예시</p>
@@ -50,7 +50,7 @@ const Input = styled.div`
       margin: auto;
       height: 40px;
       border: 0;
-      ountline: 0;
+      outline: 0;
       color: white;
       font-size: 20px;
       font-weight: 400;
