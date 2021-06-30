@@ -1,33 +1,36 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import AddDict from './AddDict';
 import { Link, withRouter } from 'react-router-dom';
-
+import { firestore } from './firebase';
+import { loadDict, loadDictFB } from './redux/modules/dictionary';
 import { useDispatch, useSelector } from 'react-redux';
 
-
 const Dict = (props) => {
+    const dispatch = useDispatch();
+    const dict_list = useSelector(state => state.dictionary.list);
 
-    const dict_list = useSelector(state => state.dictionary.word);
-    const dict_desc = useSelector(state => state.dictionary.desc);
-    const dict_example = useSelector(state => state.dictionary.example);
-    console.log(dict_desc);
-    console.log(dict_list);
-    console.log(dict_example);
- 
+    useEffect(()=>{
+        dispatch(loadDictFB());
+    }, [dispatch]);
+
     return (
         <Wrap>
             <Title>나의 사전</Title>
             <Container>
-                {dict_list.map((n, index) => {
+                {dict_list.map((list, index) => {
                     return (
-                        <DictListStyle key={index}>
+                        <DictListStyle key={index}
+                            onClick={() => {
+                                props.history.push("/adddict" + index);
+                            }}
+                        >
                             <p>단어</p>
-                            <h3>{dict_list[index]}</h3>
+                            <h3>{list.word}</h3>
                             <p>설명</p>
-                            <h3>{dict_desc[index]}</h3>
+                            <h3>{list.desc}</h3>
                             <p>예시</p>
-                            <h3 style={{ color: "#E6749D" }}>{dict_example[index]}</h3>
+                            <h3 style={{ color: "#E6749D" }}>{list.example}</h3>
                         </DictListStyle>
 
                     );
@@ -36,6 +39,7 @@ const Dict = (props) => {
             <Link to="/adddict">
                 <InputButton>+</InputButton>
             </Link>
+
         </Wrap>
     );
 }
